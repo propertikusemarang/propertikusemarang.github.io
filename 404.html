@@ -1,0 +1,22 @@
+<!doctype html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<title>TumbuhLand | Hunian dan Investasi Aman</title>
+<script>
+
+  var ROUTE_SEGMENTS = ["beranda", "tentang-kami", "produk", "kontak-kami"];
+  var parts = location.pathname.split("/").filter(Boolean);
+  var cutIndex = -1;
+  for (var i = 0; i < parts.length; i++) {
+    if (ROUTE_SEGMENTS.indexOf(parts[i]) !== -1) { cutIndex = i; break; }
+  }
+  var root = cutIndex === -1 ? "/" + parts.join("/") : "/" + parts.slice(0, cutIndex).join("/");
+  if (root !== "/" && root.charAt(root.length - 1) !== "/") root += "/";
+
+  sessionStorage.setItem('tl_redirect_path', location.pathname + location.search);
+  location.replace(root);
+</script>
+</head>
+<body></body>
+</html>
